@@ -151,6 +151,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Models\Entity\AboutMe.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

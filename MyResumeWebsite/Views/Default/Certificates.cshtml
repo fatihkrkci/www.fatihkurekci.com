@@ -1,0 +1,25 @@
+﻿@using MyResumeWebsite.Models.Entity
+@model List<Certificates>
+
+<div id="fh5co-work" class="fh5co-bg-dark">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <h2>Certificates</h2>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var certificate in Model)
+            {
+                <div class="col-md-3 text-center col-padding animate-box">
+                    <a href="#" class="work" style="background-image: url(@certificate.Picture); background-size:contain" >
+                        <div class="desc">
+                            <h3>@certificate.Name</h3>
+                            <span>@certificate.Foundation</span>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

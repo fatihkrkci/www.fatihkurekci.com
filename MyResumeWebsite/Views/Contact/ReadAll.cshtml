@@ -1,0 +1,25 @@
+﻿@model MyResumeWebsite.Models.Entity.Contact
+
+@{
+    ViewBag.Title = "ReadAll";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="col-md-12">
+    <div class="card card-secondary card-outline">
+        <div class="card-body p-0">
+            <div class="mailbox-read-info">
+                <h5>@Model.Subject</h5>
+                <h6>
+                    From: @Model.Email
+                    <span class="mailbox-read-time float-right">@(((DateTime)Model.Date).ToString("dd.MM.yyyy HH:mm:ss"))</span>
+                </h6>
+            </div>
+            <div class="mailbox-read-message">
+                @Model.Message
+            </div>
+        </div>
+    </div>
+</div>

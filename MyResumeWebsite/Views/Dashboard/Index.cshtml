@@ -1,0 +1,35 @@
+﻿@using MyResumeWebsite.Models.Entity
+@model List<AboutMe>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="col-md-12">
+    @foreach (var item in Model)
+    {
+        <div class="card card-widget widget-user">
+            <div class="widget-user-header bg-gradient-info">
+                <h3 class="widget-user-username">@item.Name @item.Surname </h3>
+                <h5 class="widget-user-desc">@item.Title</h5>
+            </div>
+            <div class="widget-user-image">
+                <img class="img-circle elevation-2" src="/images/profile-photo.jpg">
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row col-md-12" style="margin-top:5em">
+    @Html.Action("Experiences")
+    @Html.Action("Educations")
+    @Html.Action("Skills")
+    @Html.Action("Certificates")
+    @Html.Action("Projects")
+    @Html.Action("SocialMediaAccounts")
+    @Html.Action("Messages")
+    @Html.Action("Admins")
+</div>

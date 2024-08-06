@@ -1,0 +1,42 @@
+﻿@using MyResumeWebsite.Models.Entity
+@model List<Experiences>
+
+<div id="fh5co-resume" class="fh5co-bg-color" style="border-top: 10px solid #FF9000 !important;">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <h2>My Resume</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0">
+                <ul class="timeline">
+                    <li class="timeline-heading text-center animate-box">
+                        <div><h3>Work Experience</h3></div>
+                    </li>
+                    @{
+                        var isInverted = false;
+                    }
+                    @foreach (var experience in Model)
+                    {
+                        <li class="animate-box @(isInverted ? "timeline-inverted" : "timeline-unverted")">
+                            <div class="timeline-badge"><i class="icon-suitcase"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h3 class="timeline-title">@experience.Title</h3>
+                                    <span class="company">@experience.CompanyName - @experience.Date</span>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>@experience.Description</p>
+                                </div>
+                            </div>
+                        </li>
+                        isInverted = !isInverted;
+                    }
+                    <br>
+                    @Html.Action("Educations")
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

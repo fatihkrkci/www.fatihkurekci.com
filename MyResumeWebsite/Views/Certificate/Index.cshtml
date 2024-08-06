@@ -1,0 +1,97 @@
+﻿@using MyResumeWebsite.Models.Entity
+@model List<Certificates>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="col-md-12">
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title" style="font-size: 1.5rem !important;">My Certificates</h3>
+            <div class="card-tools">
+                <a class="btn btn-primary btn-sm" href="/Certificate/Add">
+                    <i class="fas fa-plus"></i>
+                    Add New Certificate
+                </a>
+            </div>
+        </div>
+        <div class="card-body table-responsive">
+            <table id="datatable" class="table table-hover text-nowrap">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Foundation</th>
+                        <th>Name</th>
+                        <th>Picture</th>
+                        <th>Status</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.Foundation</td>
+                            <td>@item.Name</td>
+                            <td>
+                                <img height="150" src="@item.Picture">
+                            </td>
+                            <td>@(item.Status.HasValue ? (item.Status.Value ? "Active" : "Passive") : "Unknown")</td>
+                            <td>
+                                <a class="btn btn-info btn-sm" href="/Certificate/GetCertificate/@item.ID">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    Edit
+                                </a>
+                                <a class="btn btn-success btn-sm" href="/Certificate/Active/@item.ID">
+                                    <i class="fas fa-check"></i>
+                                    Active
+                                </a>
+                                <a class="btn btn-warning btn-sm" href="/Certificate/Passive/@item.ID">
+                                    <i class="fas fa-archive"></i>
+                                    Passive
+                                </a>
+                                <a class="btn btn-danger btn-sm" href="/Certificate/Delete/@item.ID">
+                                    <i class="fas fa-trash"></i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- DataTables -->
+<link rel="stylesheet" href="~/Template/AdminLTE-3.0.4/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<!-- jQuery -->
+<script src="~/Template/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables/jquery.dataTables.min.js"></script>
+<!-- DataTables -->
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $.noConflict();
+        var table = $('#datatable').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            "pageLength": 5,
+            "order": [[0, 'desc']]
+        });
+    });
+</script>

@@ -1,0 +1,121 @@
+﻿@using MyResumeWebsite.Models.Entity
+@model List<SocialMedia>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="col-md-12">
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title" style="font-size: 1.5rem !important;">My Social Media Accounts</h3>
+            <div class="card-tools">
+                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modal1">
+                    <i class="fas fa-plus"></i>
+                    Add New Social Media Account
+                </button>
+            </div>
+        </div>
+        <div class="card-body table-responsive">
+            <table id="datatable" class="table table-hover text-nowrap">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Platform Name</th>
+                        <th>Link</th>
+                        <th>Icon</th>
+                        <th>Status</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.PlatformName</td>
+                            <td>@item.Link</td>
+                            <td>@item.Icon</td>
+                            <td>@(item.Status.HasValue ? (item.Status.Value ? "Active" : "Passive") : "Unknown")</td>
+                            <td>
+                                <a class="btn btn-info btn-sm" href="/SocialMedia/GetSocialMedia/@item.ID">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    Edit
+                                </a>
+                                <a class="btn btn-success btn-sm" href="/SocialMedia/Active/@item.ID">
+                                    <i class="fas fa-check"></i>
+                                    Active
+                                </a>
+                                <a class="btn btn-warning btn-sm" href="/SocialMedia/Passive/@item.ID">
+                                    <i class="fas fa-archive"></i>
+                                    Passive
+                                </a>
+                                <a class="btn btn-danger btn-sm" href="/SocialMedia/Delete/@item.ID">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add New Social Media Account</h2>
+            </div>
+            <form method="post" action="/SocialMedia/Add">
+                <div class="modal-body">
+                    <label>Platform Name</label>
+                    <input type="text" name="PlatformName" class="form-control" />
+                    <br />
+                    <label>Link</label>
+                    <input type="text" name="Link" class="form-control" />
+                    <br />
+                    <label>Icon</label>
+                    <input type="text" name="Icon" class="form-control" />
+                    <br />
+                    <button class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- DataTables -->
+<link rel="stylesheet" href="~/Template/AdminLTE-3.0.4/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<!-- jQuery -->
+<script src="~/Template/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables/jquery.dataTables.min.js"></script>
+<!-- DataTables -->
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $.noConflict();
+        var table = $('#datatable').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            "pageLength": 5,
+            "order": [[0, 'desc']]
+        });
+    });
+</script>

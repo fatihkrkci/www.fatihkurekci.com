@@ -1,0 +1,62 @@
+﻿@using MyResumeWebsite.Models.Entity
+@model List<Projects>
+
+<style>
+    .projects-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .project-card {
+        margin: 10px;
+    }
+</style>
+
+<div id="fh5co-blog">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <h2>Projects</h2>
+            </div>
+        </div>
+        <div class="row projects-container">
+            @foreach (var project in Model)
+            {
+                <div class="col-md-4 project-card">
+                    <div class="fh5co-blog animate-box">
+                        <a href="#" class="blog-bg" style="background-image: url(@project.Picture);"></a>
+                        <div class="blog-text">
+                            <span class="posted_on">@project.Date</span>
+                            <h3><a href="#">@project.Title</a></h3>
+                            <span class="posted_on">@project.Subtitle</span>
+                            @if (project.Description.Length > 100)
+                            {
+                                <p>
+                                    @project.Description.Substring(0, 100)...
+                                    <a href="javascript:void(0);" class="read-more" data-full-description="@project.Description">Read More</a>
+                                </p>
+                            }
+                            else
+                            {
+                                <p>@project.Description</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const readMoreLinks = document.querySelectorAll('.read-more');
+        readMoreLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
+                const fullDescription = this.getAttribute('data-full-description');
+                this.parentElement.innerHTML = fullDescription;
+            });
+        });
+    });
+</script>

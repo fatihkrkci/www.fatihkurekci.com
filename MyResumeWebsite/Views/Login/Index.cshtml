@@ -1,0 +1,99 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Fatih Kürekçi | Admin Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Template/login-form-20/css/style.css">
+    <link rel="icon" href="~/images/tab-logo.png">
+</head>
+<body style="background-image: url(/images/login-background.jpg); background-size: cover; background-repeat: no-repeat; background-position: 0 top; ">
+    <section class="ftco-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <img src="/images/fk-logo.png" height="100" />
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-3">
+                    <h2 class="heading-section" style="color: #3F4254; font-weight: bold">Admin Login</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-wrap p-0 login-form">
+                        <form method="post" role="form" id="loginForm" class="signin-form">
+                            <div class="form-group">
+                                <input type="text" id="username" class="form-control" name="Username" placeholder="Username" style="background-color: white;" required>
+                            </div>
+                            <div class="form-group">
+                                <input id="password-field" type="password" class="form-control" name="Password" placeholder="Password" style="background-color: white; " required>
+                                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            </div>
+                            <h1>@ViewBag.hashedPassword</h1>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary submit px-3" style="background-color: #ff9000 !important; color: white !important; border: none !important">Sign In</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/Template/AdminLTE-3.0.4/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/Template/AdminLTE-3.0.4/plugins/jquery-validation/additional-methods.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.validator.setDefaults({
+                submitHandler: function () {
+                    alert("Form successful submitted!");
+                }
+            });
+            $('#loginForm').validate({
+                rules: {
+                    Username: {
+                        required: true,
+                        email: true,
+                    },
+                    Password: {
+                        required: true
+                    },
+                },
+                messages: {
+                    Username: {
+                        required: "Please enter a email address",
+                        email: "Please enter a valid email address"
+                    },
+                    Password: {
+                        required: "Please provide a password"
+                    }
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+            });
+        });
+    </script>
+    <script src="/Template/login-form-20/js/jquery.min.js"></script>
+    <script src="/Template/login-form-20/js/popper.js"></script>
+    <script src="/Template/login-form-20/js/bootstrap.min.js"></script>
+    <script src="/Template/login-form-20/js/main.js"></script>
+
+</body>
+</html>
+

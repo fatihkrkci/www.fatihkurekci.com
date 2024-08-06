@@ -1,0 +1,29 @@
+﻿@using MyResumeWebsite.Models.Entity
+@model List<Educations>
+
+<li class="timeline-heading text-center animate-box">
+    <div><h3>Education</h3></div>
+</li>
+
+@{
+    var isInverted = true;
+}
+
+@foreach (var education in Model)
+{
+    <li class="@(isInverted ? "timeline-inverted" : "timeline-unverted") animate-box">
+        <div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
+        <div class="timeline-panel">
+            <div class="timeline-heading">
+                <h3 class="timeline-title">@education.Department</h3>
+                <span class="company">@education.SchoolName</span>
+                <span class="company">@education.Date</span>
+            </div>
+            <div class="timeline-body">
+                <p>@education.Description</p>
+            </div>
+        </div>
+    </li>
+
+    isInverted = !isInverted;
+}

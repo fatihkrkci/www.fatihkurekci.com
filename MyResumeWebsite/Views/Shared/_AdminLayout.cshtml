@@ -1,0 +1,150 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fatih Kürekçi | Admin Paneli</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Template/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/Template/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="icon" href="~/images/tab-logo.png">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <a href="/Default/Index/" class="brand-link">
+                <img src="~/images/tab-logo.png"
+                     alt="AdminLTE Logo"
+                     class="brand-image img-circle elevation-3"
+                     style="opacity: .8">
+                <span class="brand-text font-weight-light">Go To Website</span>
+            </a>
+            <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="~/images/dashboard.png" class="img-circle elevation-2">
+                    </div>
+                    <div class="info">
+                        <a href="/Dashboard/Index/" class="d-block">Dashboard</a>
+                    </div>
+                </div>
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item has-treeview">
+                            <a href="/AboutMe/Index/" class="nav-link">
+                                <i class="nav-icon fas fa-address-card"></i>
+                                <p>
+                                    About Me
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Experience/Index/" class="nav-link">
+                                <i class="nav-icon fas fa-business-time"></i>
+                                <p>
+                                    My Experiences
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="/Education/Index/" class="nav-link">
+                                <i class="nav-icon fas fa-graduation-cap"></i>
+                                <p>
+                                    My Educations
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="/Skill/Index/" class="nav-link">
+                                <i class="nav-icon fas fa-palette"></i>
+                                <p>
+                                    My Skills
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Certificate/Index/" class="nav-link">
+                                <i class="nav-icon far fa-file-code"></i>
+                                <p>
+                                    My Certificates
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Project/Index/" class="nav-link">
+                                <i class="nav-icon fas fa-laptop-code"></i>
+                                <p>
+                                    My Projects
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/SocialMedia/Index/" class="nav-link">
+                                <i class="nav-icon fas fa-hashtag"></i>
+                                <p>
+                                    My Social Media Accounts
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Contact/Index/" class="nav-link">
+                                <i class="nav-icon fas fa-envelope-open-text"></i>
+                                <p>
+                                    Contact
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Admin/Index/" class="nav-link">
+                                <i class="nav-icon fas fa-user-shield"></i>
+                                <p>
+                                    Admin Settings
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Login/LogOut/" class="nav-link">
+                                <i class="nav-icon fas fa-sign-out-alt"></i>
+                                <p>
+                                    Log Out
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        @RenderBody()
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer class="main-footer text-center">
+            <strong>&copy; 2024 <a href="https://fatihkurekci.com">Fatih Kürekçi</a></strong>
+        </footer>
+    </div>
+
+    <script src="~/Template/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <script src="~/Template/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Template/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+    <script src="~/Template/AdminLTE-3.0.4/dist/js/demo.js"></script>
+</body>
+</html>

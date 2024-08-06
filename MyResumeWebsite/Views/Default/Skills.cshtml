@@ -1,0 +1,42 @@
+﻿@using MyResumeWebsite.Models.Entity
+@model List<Skills>
+
+<style>
+    .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .skill-column {
+        margin: 10px;
+    }
+</style>
+
+<div id="fh5co-skills" class="animate-box" style="border-top: 10px solid #FF9000 !important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <h2>Skills</h2>
+                <p>The technologies and approaches I have learnt so far and used in the projects I have developed.</p>
+            </div>
+        </div>
+        <div class="row skills-container">
+            @for (int i = 0; i < Model.Count; i += 4)
+            {
+                <div class="col-md-3 skill-column">
+                    @for (int j = i; j < i + 4 && j < Model.Count; j++)
+                    {
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">@Model[j].Skill</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

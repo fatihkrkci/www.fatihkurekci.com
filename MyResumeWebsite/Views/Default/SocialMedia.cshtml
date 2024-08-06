@@ -1,0 +1,9 @@
+﻿@using MyResumeWebsite.Models.Entity
+@model List<SocialMedia>
+
+<ul class="fh5co-social-icons">
+    @foreach (var socialMedia in Model)
+	{
+        <li><a href="@socialMedia.Link"><i class="@socialMedia.Icon"></i></a></li>
+	}
+</ul>

@@ -1,0 +1,139 @@
+﻿@using MyResumeWebsite.Models.Entity
+@model List<Contact>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="col-md-12">
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title" style="font-size: 1.5rem !important;">Inbox</h3>
+        </div>
+        <div class="card-body table-responsive">
+            <table id="datatable" class="table table-hover text-nowrap">
+                <thead style="display:none">
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="font-weight:bold">@item.FirstName @item.LastName</td>
+                            <td style="font-weight:bold">@item.Subject</td>
+                            <td>
+                                @{
+                                    var message = item.Message;
+                                    if (!string.IsNullOrEmpty(message))
+                                    {
+                                        if (message.Length > 30)
+                                        {
+                                            message = message.Substring(0, 30) + "...";
+                                        }
+                                    }
+                                }
+                                @message
+                            </td>
+                            <td class="date-cell" data-date="@(((DateTime)item.Date).ToString("dd.MM.yyyy HH:mm:ss"))">
+                            </td>
+                            <td>
+                                <a class="btn btn-info btn-sm" href="/Contact/ReadAll/@item.ID">
+                                    <i class="fas fa-eye"></i> Read All
+                                </a>
+                                <a class="btn btn-danger btn-sm" href="/Contact/Delete/@item.ID">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- DataTables -->
+<link rel="stylesheet" href="~/Template/AdminLTE-3.0.4/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<!-- jQuery -->
+<script src="~/Template/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables/jquery.dataTables.min.js"></script>
+<!-- DataTables -->
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+<script>
+    // Tarihi insan tarafından okunabilir hale getirme işlevi
+    function timeSince(date) {
+        var seconds = Math.floor((new Date() - new Date(date)) / 1000);
+        var interval = seconds / 31536000;
+
+        if (interval > 1) {
+            return Math.floor(interval) + " years ago";
+        }
+        interval = seconds / 2592000;
+        if (interval > 1) {
+            return Math.floor(interval) + " months ago";
+        }
+        interval = seconds / 604800;
+        if (interval > 1) {
+            return Math.floor(interval) + " weeks ago";
+        }
+        interval = seconds / 86400;
+        if (interval > 1) {
+            return Math.floor(interval) + " days ago";
+        }
+        interval = seconds / 3600;
+        if (interval > 1) {
+            return Math.floor(interval) + " hours ago";
+        }
+        interval = seconds / 60;
+        if (interval > 1) {
+            return Math.floor(interval) + " minutes ago";
+        }
+        return "a few seconds ago";
+    }
+
+
+    function parseDateString(dateString) {
+        var parts = dateString.split(/[\s.:-]/);
+        return new Date(parts[2], parts[1] - 1, parts[0], parts[3], parts[4], parts[5]);
+    }
+
+    $(document).ready(function () {
+        $.noConflict();
+
+        // Tarih hücrelerini güncelle
+        $('.date-cell').each(function () {
+            var dateString = $(this).data('date');
+            var date = parseDateString(dateString);
+            $(this).text(timeSince(date));
+        });
+
+        // DataTables konfigürasyonu
+        var table = $('#datatable').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            "pageLength": 5,
+            "order": [[0, 'desc']]
+        });
+    });
+</script>

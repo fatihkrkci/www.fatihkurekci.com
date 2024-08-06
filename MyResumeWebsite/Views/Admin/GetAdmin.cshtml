@@ -1,0 +1,42 @@
+﻿@model MyResumeWebsite.Models.Entity.Admin
+
+@{
+    ViewBag.Title = "GetExperience";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="col-md-12">
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">Edit Admin</h3>
+        </div>
+        <div class="card-body">
+            <form method="post">
+
+                <div class="row">
+
+                    <div class="form-group col-md-4">
+                        @Html.Label("ID")
+                        @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @disabled = "disabled" })
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        @Html.Label("Username")
+                        @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        @Html.Label("Password")
+                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <button class="btn btn-info">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -54,6 +54,10 @@ eğitiminden faydalandım. Projenin detaylı incelemesine aşağıda yer alan bi
 <br> <br>
 ![screencapture-fatihkurekci-Project-Index-2024-08-07-13_00_01](https://github.com/user-attachments/assets/533e7a54-5683-412e-96a9-6efce595e47c)
 <br> <br>
+![screencapture-fatihkurekci-Certificate-Add-2024-08-07-15_28_51](https://github.com/user-attachments/assets/cc6ba21f-6745-4764-8bb7-4a52707e8f54)
+<br> <br>
+![screencapture-fatihkurekci-Certificate-GetCertificate-24-2024-08-07-15_28_36](https://github.com/user-attachments/assets/313a8115-b02e-46ab-82c2-b65a5b1849cd)
+<br> <br>
 ![screencapture-fatihkurekci-Contact-Index-2024-08-07-15_01_49](https://github.com/user-attachments/assets/72ad4d5f-3a78-444e-b4b3-f9519a1223bb)
 <br> <br>
 ![screencapture-fatihkurekci-Contact-ReadAll-34-2024-08-07-15_09_13](https://github.com/user-attachments/assets/d7b90e9a-7ffd-4471-87d1-a95afd2244f4)

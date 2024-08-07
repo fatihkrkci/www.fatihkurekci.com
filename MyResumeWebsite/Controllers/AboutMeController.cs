@@ -12,7 +12,6 @@ namespace MyResumeWebsite.Controllers
     {
         GenericRepository<AboutMe> repo = new GenericRepository<AboutMe>();
 
-        // GET: AboutMe
         [HttpGet]
         public ActionResult Index()
         {

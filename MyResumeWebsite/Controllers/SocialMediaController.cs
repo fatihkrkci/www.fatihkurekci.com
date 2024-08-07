@@ -11,7 +11,6 @@ namespace MyResumeWebsite.Controllers
     public class SocialMediaController : Controller
     {
         GenericRepository<SocialMedia> repo = new GenericRepository<SocialMedia>();
-        // GET: SocialMedia
         public ActionResult Index()
         {
             var socialMedias = repo.List();

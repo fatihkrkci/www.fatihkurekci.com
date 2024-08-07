@@ -138,9 +138,38 @@
             </section>
         </div>
         <footer class="main-footer text-center">
-            <strong>&copy; 2024 <a href="https://fatihkurekci.com">Fatih Kürekçi</a></strong>
+            <strong>&copy; @DateTime.Now.Year <a href="https://fatihkurekci.com">Fatih Kürekçi</a></strong>
         </footer>
     </div>
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Template/AdminLTE-3.0.4/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <!-- jQuery -->
+    <script src="~/Template/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <script src="~/Template/AdminLTE-3.0.4/plugins/datatables/jquery.dataTables.min.js"></script>
+    <!-- DataTables -->
+    <script src="~/Template/AdminLTE-3.0.4/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Template/AdminLTE-3.0.4/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $.noConflict();
+            var table = $('#datatable').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "pageLength": 5,
+                "order": [[0, 'desc']]
+            });
+        });
+    </script>
 
     <script src="~/Template/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
     <script src="~/Template/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

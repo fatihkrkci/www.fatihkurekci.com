@@ -11,7 +11,6 @@ namespace MyResumeWebsite.Controllers
     public class ContactController : Controller
     {
         GenericRepository<Contact> repo = new GenericRepository<Contact>();
-        // GET: Contact
         public ActionResult Index()
         {
             var messages = repo.List().OrderByDescending(x => x.Date).ToList();

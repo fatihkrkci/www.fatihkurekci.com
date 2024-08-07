@@ -63,20 +63,7 @@
     </div>
 </div>
 
-<!-- DataTables -->
-<link rel="stylesheet" href="~/Template/AdminLTE-3.0.4/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-<!-- jQuery -->
-<script src="~/Template/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
-<script src="~/Template/AdminLTE-3.0.4/plugins/datatables/jquery.dataTables.min.js"></script>
-<!-- DataTables -->
-<script src="~/Template/AdminLTE-3.0.4/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="~/Template/AdminLTE-3.0.4/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="~/Template/AdminLTE-3.0.4/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-
 <script>
-    // Tarihi insan tarafından okunabilir hale getirme işlevi
     function timeSince(date) {
         var seconds = Math.floor((new Date() - new Date(date)) / 1000);
         var interval = seconds / 31536000;
@@ -116,14 +103,12 @@
     $(document).ready(function () {
         $.noConflict();
 
-        // Tarih hücrelerini güncelle
         $('.date-cell').each(function () {
             var dateString = $(this).data('date');
             var date = parseDateString(dateString);
             $(this).text(timeSince(date));
         });
 
-        // DataTables konfigürasyonu
         var table = $('#datatable').DataTable({
             "paging": true,
             "lengthChange": false,

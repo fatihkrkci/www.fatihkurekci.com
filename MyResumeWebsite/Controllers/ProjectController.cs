@@ -13,7 +13,6 @@ namespace MyResumeWebsite.Controllers
     {
         GenericRepository<Projects> repo = new GenericRepository<Projects>();
 
-        // GET: Project
         public ActionResult Index()
         {
             var projects = repo.List();
